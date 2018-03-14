@@ -1,0 +1,31 @@
+<div id="container">
+<div class="content">
+    <h1>Restaurants list</h1>
+    </div>
+
+    <div class="content">
+    <ul>
+      <% @restaurants.each_with_index do |restaurant| %>
+        <li><div class="restaurant">
+          <strong><%= link_to restaurant[:name], restaurant_path(restaurant) %></strong>
+          -
+          <%= restaurant[:address] %>
+          -
+          <strong><%= restaurant[:category] %></strong>
+          -
+          <%= restaurant[:phone_number] %>
+
+          <div class="action"><%= link_to "edit", edit_restaurant_path(restaurant) %></div>
+
+          <div class="action"><%= link_to "delete", restaurant_path(restaurant), method: :delete ,data: { confirm: "Are you sure?" }%></div>
+
+          </div></li>
+
+        <%= hidden_field_tag :id, restaurant[:id] %>
+      <% end %>
+    </ul>
+  </div>
+  <!-- </div> -->
+
+  <a href="/restaurants/new"><div class="button">Create new restaurant</div></a>
+</div>
